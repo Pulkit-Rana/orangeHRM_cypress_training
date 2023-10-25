@@ -1,0 +1,8 @@
+{
+  "scripts":{
+    "chrome": "npx cypress run --browser chrome"
+    },
+  "devDependencies": {
+    "cypress": "^13.3.2"
+  }
+}
