@@ -10,12 +10,14 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('login', () => { 
-    // login Image should be visible
-    // Enter username
-    //enter password
-    // click on submit button.
- })
+Cypress.Commands.add('login', () => {
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+    cy.get('[alt="company-branding"]').should("be.visible")
+    cy.get('[placeholder="Username"]').type("Admin")
+    cy.get('[placeholder="Password"]').type("admin123")
+    cy.get('.oxd-button').contains("Login").click()
+    cy.get(".oxd-text.oxd-text--span.oxd-main-menu-item--name").contains("Dashboard").parent().should("have.class", "oxd-main-menu-item active")
+})
 //
 //
 // -- This is a child command --
