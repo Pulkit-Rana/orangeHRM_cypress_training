@@ -1,18 +1,27 @@
-describe("Check The Dashboard Functionality", () => {
-
-    it("visit the url and perform login", () => {
-       
-        cy.get(".oxd-text.oxd-text--span.oxd-main-menu-item--name").contains("Dashboard").parents(".oxd-main-menu").find("li a").should("have.class", "oxd-main-menu-item active")
-        // cy.get(".oxd-text.oxd-text--span.oxd-main-menu-item--name").contains("Dashboard").parent().should("have.class","oxd-main-menu-item active")
+describe("API testing", () => {
+  it("Working with GET API", () => {
+    cy.request("GET", "https://opensource-demo.orangehrmlive.com/").then(response => {
+      expect(response.status).to.eq(200)
     })
+  })
 
-    it("Validate the default landning page & Validate the page", () => {
-
+  it("Working with POST API", () => {
+    cy.request("POST", "https://opensource-demo.orangehrmlive.com/", {
+      username: "Admin",
+      password: "admin123",
+    }).then(response => {
+      expect(response.status).to.eq(200)
     })
+  })
 
-
-    it("alidate that the dashboard tiles is visible to me and validate the length should be 7 ", () => {
-        //// validate that the dashboard tiles is visible to me and validate the length should be 7 
-        // Validate the name on each tiles
+  it.only("POST API to test the response data", () => {
+    cy.request("POST", "https://reqres.in/api/users", {
+      name: "Bingo",
+      job: "Team Lead",
+    }).then(res => {
+      expect(res.body.name).to.eq("Bingo")
+      expect(res.status).to.eq(201)
+      expect(res.statusText).to.eq("Created")
     })
+  })
 })

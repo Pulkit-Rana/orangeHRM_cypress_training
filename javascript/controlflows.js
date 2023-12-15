@@ -33,48 +33,44 @@
 const food = "pizza"
 
 switch (food) {
-    case 'fruit chaat':
-        console.log("This is not the desired food: Fruit Chaat")
-        break; // take a step forward
-    case 'pizza':
-        console.log("This is not the desired food: Pizza")
-        break;
-    default:
-        console.log("Sorry No Salad Found")
+  case "fruit chaat":
+    console.log("This is not the desired food: Fruit Chaat")
+    break // take a step forward
+  case "pizza":
+    console.log("This is not the desired food: Pizza")
+    break
+  default:
+    console.log("Sorry No Salad Found")
 }
 
 // if/else Statement
-const ismailSent = true;
+const ismailSent = true
 
 if (ismailSent) {
-    console.log("Mail Sent")
+  console.log("Mail Sent")
 }
 
 console.log("This will run anyways!!!")
-
 
 //else if
 
 const size = 1000
 
 if (size > 100) {
-    console.log("Big");
-}
-else if (size > 20) {
-    console.log("medium")
-}
-else if (size > 10) {
-    console.log("small")
-}
-else{
-    console.log("Size Not found")
+  console.log("Big")
+} else if (size > 20) {
+  console.log("medium")
+} else if (size > 10) {
+  console.log("small")
+} else {
+  console.log("Size Not found")
 }
 // Logical Operator !
 
-const ismailSent1 = false;
+const ismailSent1 = false
 
 if (!ismailSent1) {
-    console.log("Mail Sent")
+  console.log("Mail Sent")
 }
 
 console.log("This will run anyways!!!")
