@@ -1,7 +1,7 @@
 describe("Test Suite for Admin Page", () => {
   beforeEach(() => {
     cy.login()
-    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers") // 6s
+    cy.visit("/admin/viewSystemUsers") // 6s
     cy.fixture("/admin.json").as("adminData")
   })
 

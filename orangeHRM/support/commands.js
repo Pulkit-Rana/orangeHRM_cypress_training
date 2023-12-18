@@ -17,17 +17,15 @@ const loginPage = new LoginPage()
 
 // This way of aliasing was not allowedfor fixtures in prev versions.
 Cypress.Commands.add("login", () => {
-  cy.fixture("/login.json").then(login => {
-    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php")
-    loginPage.getComapnyLogo().should("be.visible")
-    loginPage.getLoginUserName().type("Admin")
-    loginPage.getLoginPassword().type("admin123")
-    cy.get(".oxd-button").contains("Login").click()
-    cy.get(".oxd-text.oxd-text--span.oxd-main-menu-item--name")
-      .contains("Dashboard")
-      .parent()
-      .should("have.class", "oxd-main-menu-item active")
-  })
+  cy.visit("/")
+  loginPage.getComapnyLogo().should("be.visible")
+  loginPage.getLoginUserName().type(Cypress.env("userName"))
+  loginPage.getLoginPassword().type(Cypress.env("password"), { log: false })
+  cy.get(".oxd-button").contains("Login").click()
+  cy.get(".oxd-text.oxd-text--span.oxd-main-menu-item--name")
+    .contains("Dashboard")
+    .parent()
+    .should("have.class", "oxd-main-menu-item active")
 })
 //
 //
