@@ -10,7 +10,7 @@
 //
 //
 // -- This is a parent command --
-
+import 'cypress-iframe';
 import { LoginPage } from "./pageobjects/loginpage"
 
 const loginPage = new LoginPage()
@@ -27,15 +27,9 @@ Cypress.Commands.add("login", () => {
     .parent()
     .should("have.class", "oxd-main-menu-item active")
 })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('getIframe', (iframe) => {
+  return cy.get(iframe).its("0.contentDocument").its('body').then(cy.wrap)
+
+})
+

@@ -4,7 +4,7 @@ describe("Check The Dashboard Functionality", () => {
   })
 
   it("Verify the Dashboard Page", () => {
-    cy.get(".oxd-text.oxd-text--span.oxd-main-menu-item--name")
+    cy.get(".oxd-text.oxd-text--span.oxd-main-menu-item-- name")
       .contains("Dashboard")
       .parents(".oxd-main-menu-item-wrapper a")
       .should("have.class", "oxd-main-menu-item active")
