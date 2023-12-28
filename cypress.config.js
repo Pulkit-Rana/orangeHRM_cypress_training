@@ -5,7 +5,7 @@ module.exports = defineConfig({
   viewportWidth: 1920,
   trashAssetsBeforeRuns: true,
   screenshotOnRunFailure: true,
-  screenshotsFolder: " /orangeHRM/reports/mochareports/screenshots",
+  screenshotsFolder: "/orangeHRM/reports/mochareports/screenshots",
   downloadsFolder: "orangeHRM/downloads",
   fixturesFolder: "orangeHRM/fixtures",
   numTestsKeptInMemory: 10,
