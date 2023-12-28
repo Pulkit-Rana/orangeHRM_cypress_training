@@ -1,27 +1,44 @@
-name: Cypress Orange_HRM
-on : push
+name: Cypress Tests
+
+on: push
 
 jobs:
-  Cypress-setup:
+  install:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: precommit
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
+        with:
+          # Disable running of tests within install job
+          runTests: false
+      - name: Save build folder screenshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: orangeHRM/screenshots
+          if-no-files-found: ignore
+      - name: Save build folder videos
+        uses: actions/upload-artifact@v3
+        with:
+          name: videos
+          path: orangeHRM/videos
+          if-no-files-found: ignore
+
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Prettier
         run: npm ci
       - run: npm run precommit
-job:
-  Cypress-run:   
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm run test 
+          start: npm start
           browser: chrome
-
-      - name: Uploading Artifacts
-        uses: actions/upload-artifact@v3
-        if: always()    
-        with:
-          name: cypress-execution-report
-          path: orange_hrm/reports
-          retention-days: 30
